@@ -22,6 +22,8 @@
         <java.version>17</java.version>
         <!-- Clase que ejecuta NetBeans al darle Run -->
         <exec.mainClass>com.umg.edu.TiendaMVC</exec.mainClass>
+        <!-- NetBeans usa esta propiedad en los proyectos Spring Boot -->
+        <start-class>com.umg.edu.TiendaMVC</start-class>
     </properties>
 
     <dependencies>
