@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Marca')}"></head>
+<body class="bg-light">
+
+<nav th:replace="~{fragments/layout :: navbar('marcas')}"></nav>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <h1 class="h3 mb-3" th:text="${marca.idMarca == 0} ? 'Nueva marca' : 'Editar marca'">Marca</h1>
+
+            <div th:replace="~{fragments/layout :: alertas}"></div>
+
+            <form th:action="@{/marcas/guardar}" th:object="${marca}" method="post"
+                  class="card card-body shadow-sm border-0">
+                <input type="hidden" th:field="*{idMarca}">
+
+                <div class="mb-4">
+                    <label for="nombre" class="form-label">Nombre de la marca</label>
+                    <input type="text" id="nombre" class="form-control" th:field="*{nombre}" maxlength="50" required>
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+                    <button type="reset" class="btn btn-outline-secondary"><i class="bi bi-eraser"></i> Limpiar</button>
+                    <a href="/marcas" class="btn btn-link ms-auto">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: pie}"></div>
+</body>
+</html>

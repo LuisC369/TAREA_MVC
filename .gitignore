@@ -1,0 +1,20 @@
+# Compilados de Maven
+target/
+build/
+dist/
+*.class
+*.jar
+
+# Archivos locales de NetBeans
+nbproject/private/
+nbactions.xml
+nb-configuration.xml
+
+# Video y respaldos (van en YouTube / Drive, no en el repo)
+*.mp4
+*.zip
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Piezas que se repiten en todas las paginas. Cada vista las incluye con th:replace -->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- 1. Encabezado: carga Bootstrap desde el CDN -->
+<head th:fragment="head(titulo)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title th:text="${titulo} + ' | Tienda UMG'">Tienda UMG</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+<!-- 2. Barra de navegacion (se marca el modulo activo) -->
+<nav th:fragment="navbar(activo)" class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-semibold" href="/"><i class="bi bi-shop"></i> Tienda UMG</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activo == 'inicio'} ? 'active'" href="/">
+                        <i class="bi bi-house"></i> Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activo == 'clientes'} ? 'active'" href="/clientes">
+                        <i class="bi bi-people"></i> Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activo == 'marcas'} ? 'active'" href="/marcas">
+                        <i class="bi bi-tags"></i> Marcas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:classappend="${activo == 'puestos'} ? 'active'" href="/puestos">
+                        <i class="bi bi-briefcase"></i> Puestos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- 3. Alertas: muestran el mensaje que manda el controlador -->
+<div th:fragment="alertas">
+    <div th:if="${mensaje}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="bi bi-check-circle"></i> <span th:text="${mensaje}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle"></i> <span th:text="${error}"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+</div>
+
+<!-- 4. Pie de pagina y JavaScript de Bootstrap (menu y alertas) -->
+<div th:fragment="pie">
+    <footer class="text-center text-muted small py-4">
+        Programacion II · UMG · Luis Lopez
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</div>
+
+</body>
+</html>

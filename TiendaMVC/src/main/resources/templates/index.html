@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Inicio')}"></head>
+<body class="bg-light">
+
+<nav th:replace="~{fragments/layout :: navbar('inicio')}"></nav>
+
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="display-6 fw-semibold">Sistema de la Tienda</h1>
+        <p class="lead text-muted">Aplicacion web con el patron MVC, Spring Boot y Bootstrap</p>
+    </div>
+
+    <!-- Una tarjeta por modulo; el total lo manda el InicioControlador -->
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-people fs-1 text-primary"></i>
+                    <h5 class="card-title mt-2">Clientes</h5>
+                    <p class="display-6" th:text="${totalClientes}">0</p>
+                    <a href="/clientes" class="btn btn-outline-primary">Ver clientes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-tags fs-1 text-primary"></i>
+                    <h5 class="card-title mt-2">Marcas</h5>
+                    <p class="display-6" th:text="${totalMarcas}">0</p>
+                    <a href="/marcas" class="btn btn-outline-primary">Ver marcas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+                <div class="card-body text-center">
+                    <i class="bi bi-briefcase fs-1 text-primary"></i>
+                    <h5 class="card-title mt-2">Puestos</h5>
+                    <p class="display-6" th:text="${totalPuestos}">0</p>
+                    <a href="/puestos" class="btn btn-outline-primary">Ver puestos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: pie}"></div>
+</body>
+</html>

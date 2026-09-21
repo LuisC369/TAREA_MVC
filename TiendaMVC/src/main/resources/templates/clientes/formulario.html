@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Cliente')}"></head>
+<body class="bg-light">
+
+<nav th:replace="~{fragments/layout :: navbar('clientes')}"></nav>
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <h1 class="h3 mb-3" th:text="${cliente.id == 0} ? 'Nuevo cliente' : 'Editar cliente'">Cliente</h1>
+
+            <div th:replace="~{fragments/layout :: alertas}"></div>
+
+            <!-- th:object une el formulario con el objeto Cliente del controlador -->
+            <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post"
+                  class="card card-body shadow-sm border-0">
+                <input type="hidden" th:field="*{id}">
+
+                <div class="mb-3">
+                    <label for="nit" class="form-label">NIT</label>
+                    <input type="text" id="nit" class="form-control" th:field="*{nit}" maxlength="20" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-control" th:field="*{nombre}" maxlength="100" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" id="apellidos" class="form-control" th:field="*{apellidos}" maxlength="100" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" th:field="*{email}" maxlength="100"
+                           placeholder="correo@ejemplo.com">
+                </div>
+
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-success"><i class="bi bi-save"></i> Guardar</button>
+                    <button type="reset" class="btn btn-outline-secondary"><i class="bi bi-eraser"></i> Limpiar</button>
+                    <a href="/clientes" class="btn btn-link ms-auto">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/layout :: pie}"></div>
+</body>
+</html>
