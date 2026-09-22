@@ -10,7 +10,7 @@ de la tarea anterior.
 
 ## Video de funcionamiento
 
-**Video (max. 2 minutos):** PEGAR_AQUI_EL_LINK_DE_YOUTUBE
+**Video (max. 2 minutos):** https://youtu.be/wRp5nH7tjtA
 
 ## Modulos (3 entidades)
 
